@@ -2,9 +2,42 @@
 //
 
 #include <iostream>
+#include <SFML\Graphics.hpp>
+
+//current situation: cannot get the background to load from file on line 19
 
 int main()
 {
+
+    //Create a Video mode Object
+    sf::VideoMode vm = sf::VideoMode::getFullscreenModes()[0];
+
+    //create and open a window for the game
+    sf::RenderWindow window(vm, "timber");
+
+    sf::Texture background;
+    background.loadFromFile("graphics/background.png");
+    
+    sf::Sprite sbackground(background);
+    sbackground.setTexture(background);
+    sbackground.setPosition({ 0, 0 });
+
+    //game loop
+    while (window.isOpen()) {
+        //handle players input
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
+            window.close();
+        }
+
+        //update the scene
+
+        //draw the scene
+        window.clear();
+        //draw game scene here
+
+        //display here
+        window.display();
+    };
     std::cout << "Hello World!\n";
 }
 
